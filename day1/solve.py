@@ -2,16 +2,26 @@ import sys
 
 DIGITS = set([str(val) for val in range(10)])
 DIGIT_WORDS = {
-    "zero": 0,
-    "one": 1,
-    "two": 2,
-    "three": 3,
-    "four": 4,
-    "five": 5,
-    "six": 6,
-    "seven": 7,
-    "eight": 8,
-    "nine": 9,
+    "zero": "0",
+    "one": "1",
+    "two": "2",
+    "three": "3",
+    "four": "4",
+    "five": "5",
+    "six": "6",
+    "seven": "7",
+    "eight": "8",
+    "nine": "9",
+    "0": "0",
+    "1": "1",
+    "2": "2",
+    "3": "3",
+    "4": "4",
+    "5": "5",
+    "6": "6",
+    "7": "7",
+    "8": "8",
+    "9": "9",
 }
 
 def get_input(filename=sys.argv[1]):
@@ -51,10 +61,6 @@ def solve_part1():
 def get_first_digit(input_string):
     for i in range(len(input_string)):
         front_slice = input_string[i:]
-        if front_slice[0] in DIGITS:
-            first_digit = front_slice[0]
-            return first_digit
-
         for digit_word in DIGIT_WORDS:
             if front_slice.startswith(digit_word):
                 first_digit = str(DIGIT_WORDS[digit_word])
@@ -63,10 +69,6 @@ def get_first_digit(input_string):
 def get_last_digit(input_string):
     for i in range(len(input_string)-1, -1, -1):
         back_slice = input_string[i:]
-        if back_slice[0] in DIGITS:
-            first_digit = back_slice[0]
-            return first_digit
-
         for digit_word, digit in DIGIT_WORDS.items():
             if back_slice.find(digit_word) != -1:
                 first_digit = str(digit)
